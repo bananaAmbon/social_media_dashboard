@@ -1,7 +1,6 @@
 import React from 'react';
-import ListUser from './ListUser';
 
-function App() {
+function App(props) {
   return (
     <React.Fragment>
       <header className="header">
@@ -9,7 +8,7 @@ function App() {
           <h1>Placeholder Dashboard</h1>
         </div>
       </header>
-      <ListUser/>
+      {props.children}
     </React.Fragment>
   );
 }
