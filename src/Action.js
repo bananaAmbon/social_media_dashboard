@@ -74,3 +74,33 @@ export const fetchComments = async (dispatch, postId) => {
     console.log(error)
   }
 };
+
+export const fetchPhotos = async (dispatch, albumId) => {
+  try {
+    const endPoint = '/photos/?albumId=' + albumId;
+    const response = await api.get(endPoint);
+    if (response.status === 200) {
+      return dispatch({
+        type: 'FETCH_PHOTOS',
+        payload: response.data
+      });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export const addPost = async (dispatch, payload) => {
+  try {
+    const endPoint = '/posts';
+    const response = await api.post(endPoint, payload);
+    if (response.status === 200) {
+      return dispatch({
+        type: 'ADD_POST',
+        payload: response.data
+      });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};

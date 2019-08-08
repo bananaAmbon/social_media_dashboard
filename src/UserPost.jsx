@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Store } from './Store';
 import { fetchUserPost } from './Action';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Link } from '@reach/router';
 
 const UserPost = (props) => {
@@ -15,18 +15,40 @@ const UserPost = (props) => {
 
   return (
     <React.Fragment>
-      <ListGroup>
-        {userPost.map(val => {
-          return (
-            <ListGroupItem key={val.id}>
-              <h4>
-                <Link to={'/user/' + user + '/post/' + val.id} className='text-decoration-none'>{val.title}</Link>
-              </h4>
-              <p>{val.body}</p>
-            </ListGroupItem>
-          )
-        })}
-      </ListGroup>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userPost.map((val, idx) => {
+            return (
+              <tr key={idx}>
+                <td>{idx + 1}</td>
+                <td>
+                  <Link to={'/user/' + user + '/post/' + val.id}>
+                    {val.title}
+                  </Link>
+                </td>
+                <td>{val.body}</td>
+                {/* <td>
+                  <Button variant='info'>
+                    Edit
+                  </Button>
+                </td>
+                <td>
+                  <Button variant='danger' onClick={(e) => test(e)} data-post_id={val.id}>
+                    Delete
+                  </Button>
+                </td> */}
+              </tr>
+            )
+          })}
+        </tbody>
+      </Table>
     </React.Fragment>
   )
 }

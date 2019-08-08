@@ -8,6 +8,7 @@ const initialState = {
   userPost: [],
   userAlbum: [],
   comments: [],
+  photos: []
 }
 
 function reducer(state, action) {
@@ -36,6 +37,16 @@ function reducer(state, action) {
       return {
         ...state,
         comments: action.payload
+      }
+    case 'FETCH_PHOTOS':
+      return {
+        ...state,
+        photos: action.payload
+      }
+    case 'ADD_POST':
+      return {
+        ...state,
+        userPost: [...state.userPost, action.payload]
       }
     default:
       return state;

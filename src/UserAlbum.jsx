@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Store } from './Store';
 import { fetchUserAlbum } from './Action';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Link } from '@reach/router';
 
 const UserAlbum = (props) => {
@@ -15,17 +15,28 @@ const UserAlbum = (props) => {
 
   return (
     <React.Fragment>
-      <ListGroup>
-        {userAlbum.map(val => {
-          return (
-            <ListGroupItem key={val.id}>
-              <h4>
-                <Link to={'/album/' + val.id} className='text-decoration-none'>{val.title}</Link>
-              </h4>
-            </ListGroupItem>
-          )
-        })}
-      </ListGroup>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userAlbum.map((val, idx) => {
+            return (
+              <tr key={idx}>
+                <td>{idx + 1}</td>
+                <td>
+                  <Link to={'/user/' + user + '/album/' + val.id}>
+                    {val.title}
+                  </Link>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </Table>
     </React.Fragment>
   )
 }

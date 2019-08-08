@@ -18,7 +18,7 @@ const DetailPost = (props) => {
       <Container>
         <Row>
           <Col>
-            <Breadcrumbs {...currentUser}/>
+            <Breadcrumbs {...currentUser} label='Comments'/>
           </Col>
         </Row>
         <Row>

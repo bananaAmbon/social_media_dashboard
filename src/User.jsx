@@ -9,7 +9,7 @@ const User = (props) => {
   const { currentUser } = state;
 
   useEffect(() => {
-    (currentUser.length === 0 || currentUser.id !== userId) && fetchCurrentUser(dispatch, userId);
+    (currentUser.length === 0 || currentUser.id !== parseInt(userId)) && fetchCurrentUser(dispatch, userId);
   }, [dispatch, userId, currentUser]);
 
   return (
@@ -17,7 +17,10 @@ const User = (props) => {
       {props["*"].includes('post') ?
         children
         :
-        currentUser === undefined ? null : <Profile user={currentUser} userId={userId}/>
+        props["*"].includes('album') ?
+          children
+          :
+          currentUser === undefined ? null : <Profile user={currentUser} userId={userId}/>
       }
     </React.Fragment>
   );
