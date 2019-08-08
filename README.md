@@ -4,6 +4,11 @@
 ## Build Setup
 
 ```bash
+# setup
+npm install
+```
+
+```bash
 # serve local
 npm start
 ```
