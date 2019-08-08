@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASEURL = 'http://jsonplaceholder.typicode.com';
+const BASEURL = 'https://jsonplaceholder.typicode.com';
 
 export const api = {
   get
