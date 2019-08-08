@@ -20,7 +20,7 @@ const UserPost = (props) => {
           return (
             <ListGroupItem key={val.id}>
               <h4>
-                <Link to={'/post/' + val.id} className='text-decoration-none'>{val.title}</Link>
+                <Link to={'/user/' + user + '/post/' + val.id} className='text-decoration-none'>{val.title}</Link>
               </h4>
               <p>{val.body}</p>
             </ListGroupItem>

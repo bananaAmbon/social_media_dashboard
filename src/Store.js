@@ -6,7 +6,8 @@ const initialState = {
   users: [],
   currentUser: [],
   userPost: [],
-  userAlbum: []
+  userAlbum: [],
+  comments: [],
 }
 
 function reducer(state, action) {
@@ -30,6 +31,11 @@ function reducer(state, action) {
       return {
         ...state,
         userAlbum: action.payload
+      }
+    case 'FETCH_COMMENTS':
+      return {
+        ...state,
+        comments: action.payload
       }
     default:
       return state;

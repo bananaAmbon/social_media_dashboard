@@ -59,3 +59,18 @@ export const fetchUserAlbum = async (dispatch, userId) => {
     console.log(error)
   }
 };
+
+export const fetchComments = async (dispatch, postId) => {
+  try {
+    const endPoint = '/posts/' + postId + '/comments';
+    const response = await api.get(endPoint);
+    if (response.status === 200) {
+      return dispatch({
+        type: 'FETCH_COMMENTS',
+        payload: response.data
+      });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
