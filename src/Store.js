@@ -3,7 +3,10 @@ import React from 'react';
 export const Store = React.createContext();
 
 const initialState = {
-  users: []
+  users: [],
+  currentUser: [],
+  userPost: [],
+  userAlbum: []
 }
 
 function reducer(state, action) {
@@ -12,6 +15,21 @@ function reducer(state, action) {
       return {
         ...state,
         users: action.payload
+      }
+    case 'FETCH_CURRENT_USER':
+      return {
+        ...state,
+        currentUser: action.payload
+      }
+    case 'FETCH_USER_POST':
+      return {
+        ...state,
+        userPost: action.payload
+      }
+    case 'FETCH_USER_ALBUM':
+      return {
+        ...state,
+        userAlbum: action.payload
       }
     default:
       return state;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Store } from './Store';
-import { fetchDataAction } from './Action';
+import { fetchUsers } from './Action';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from '@reach/router';
 
@@ -8,7 +8,7 @@ const ListUser = () => {
   const { state, dispatch } = React.useContext(Store);
 
   React.useEffect(() => {
-    state.users.length === 0 && fetchDataAction(dispatch);
+    state.users.length === 0 && fetchUsers(dispatch);
   });
 
   const users = state.users;
@@ -19,7 +19,7 @@ const ListUser = () => {
         {users.map(user => {
           return (
             <ListGroupItem key={user.id}>
-              <Link to="#">{user.username}</Link>
+              <Link to={'user/' + user.id}>{user.username}</Link>
             </ListGroupItem>
           );
         })}

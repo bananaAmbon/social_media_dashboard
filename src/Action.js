@@ -1,11 +1,61 @@
-const BASEURL = 'https://jsonplaceholder.typicode.com';
+import { api } from './Api';
 
-export const fetchDataAction = async (dispatch) => {
-  const data = await fetch(BASEURL + '/users');
-  const dataJson = await data.json();
+export const fetchUsers = async (dispatch) => {
+  try {
+    const endPoint = '/users';
+    const response = await api.get(endPoint);
+    if (response.status === 200) {
+      return dispatch({
+        type: 'FETCH_USERS',
+        payload: response.data
+      });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
 
-  return dispatch({
-    type: 'FETCH_USERS',
-    payload: dataJson
-  });
+export const fetchCurrentUser = async (dispatch, userId) => {
+  try {
+    const endPoint = '/users/' + userId;
+    const response = await api.get(endPoint);
+    if (response.status === 200) {
+      return dispatch({
+        type: 'FETCH_CURRENT_USER',
+        payload: response.data
+      });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export const fetchUserPost = async (dispatch, userId) => {
+  try {
+    const endPoint = '/posts?userId=' + userId;
+    const response = await api.get(endPoint);
+    if (response.status === 200) {
+      return dispatch({
+        type: 'FETCH_USER_POST',
+        payload: response.data
+      });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export const fetchUserAlbum = async (dispatch, userId) => {
+  try {
+    const endPoint = '/albums?userId=' + userId;
+    const response = await api.get(endPoint);
+    if (response.status === 200) {
+      return dispatch({
+        type: 'FETCH_USER_ALBUM',
+        payload: response.data
+      });
+    }
+  } catch (error) {
+    console.log(error)
+  }
 };
