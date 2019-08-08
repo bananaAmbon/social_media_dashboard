@@ -31,5 +31,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://jsonplaceholder.typicode.com"
+  "proxy": "https://jsonplaceholder.typicode.com"
 }
